@@ -10,7 +10,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
@@ -39,22 +38,23 @@ public class MovieAdapter extends ArrayAdapter<Movie> {
             viewHolder = (ViewHolder) convertView.getTag();
         }
 
-        viewHolder.movieTitleView.setText(movie.getTitle());
-        viewHolder.movieOverview.setText(movie.getOverview());
-        Picasso.with(getContext()).load("http://image.tmdb.org/t/p/w300" + movie.getPoster()).into(viewHolder.moviePoster);
+//        viewHolder.movieTitleView.setText(movie.getTitle());
+//        viewHolder.movieOverview.setText(movie.getOverview());
 
+        viewHolder.moviePoster.setAdjustViewBounds(true);
+        Picasso.with(getContext()).load("http://image.tmdb.org/t/p/w500" + movie.getPoster()).into(viewHolder.moviePoster);
 
         return convertView;
     }
 
     private static final class ViewHolder {
-        private final TextView movieTitleView;
-        private final TextView movieOverview;
+//        private final TextView movieTitleView;
+//        private final TextView movieOverview;
         private final ImageView moviePoster;
 
         public ViewHolder(View view) {
-            movieTitleView = (TextView) view.findViewById(R.id.movie_title);
-            movieOverview = (TextView) view.findViewById(R.id.movie_Overview);
+//            movieTitleView = (TextView) view.findViewById(R.id.movie_title);
+//            movieOverview = (TextView) view.findViewById(R.id.movie_Overview);
             moviePoster = (ImageView) view.findViewById(R.id.moviePoster);
         }
     }

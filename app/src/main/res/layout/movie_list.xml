@@ -5,7 +5,6 @@
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
-
     <EditText
         android:id="@+id/search_movies"
         android:layout_width="255dp"
@@ -21,11 +20,15 @@
         android:layout_toRightOf="@+id/search_movies"
         android:text="Search" />
 
-    <ListView
+
+    <GridView
         android:id="@+id/list_movies"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/search_movies" />
+        android:layout_below="@id/search_movies"
+        android:columnWidth="100dp"
+        android:numColumns="3"
+        android:stretchMode="columnWidth" />
 
     <TextView
         android:id="@+id/text_no_movies"
@@ -33,6 +36,5 @@
         android:layout_height="match_parent"
         android:gravity="center"
         android:text="@string/no_movies_found" />
-
 
 </RelativeLayout>

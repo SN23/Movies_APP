@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ListView;
+import android.widget.GridView;
 
 import java.util.ArrayList;
 
@@ -32,9 +32,9 @@ public class MovieFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         final View rootView = inflater.inflate(R.layout.movie_list, container, false);
-        final ListView listView = (ListView) rootView.findViewById(R.id.list_movies);
-        listView.setAdapter(mMovieAdapter);
-        listView.setEmptyView(rootView.findViewById(R.id.text_no_movies));
+        final GridView gridView = (GridView) rootView.findViewById(R.id.list_movies);
+        gridView.setAdapter(mMovieAdapter);
+        gridView.setEmptyView(rootView.findViewById(R.id.text_no_movies));
         final EditText SearchMovies = (EditText) rootView.findViewById(R.id.search_movies);
         Button searchButton = (Button) rootView.findViewById(R.id.searchButton);
         searchButton.setOnClickListener(new View.OnClickListener() {
