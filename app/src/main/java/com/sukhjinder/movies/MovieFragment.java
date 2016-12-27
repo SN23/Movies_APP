@@ -7,9 +7,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -19,6 +21,7 @@ import java.util.ArrayList;
 public class MovieFragment extends Fragment {
 
     private MovieAdapter mMovieAdapter;
+    ArrayList<Movie> movies;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -35,6 +38,14 @@ public class MovieFragment extends Fragment {
         final GridView gridView = (GridView) rootView.findViewById(R.id.list_movies);
         gridView.setAdapter(mMovieAdapter);
         gridView.setEmptyView(rootView.findViewById(R.id.text_no_movies));
+        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Movie movie = (Movie) gridView.getItemAtPosition(position);
+                Toast.makeText(getContext(), movie.getTitle(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
         final EditText SearchMovies = (EditText) rootView.findViewById(R.id.search_movies);
         Button searchButton = (Button) rootView.findViewById(R.id.searchButton);
         searchButton.setOnClickListener(new View.OnClickListener() {
@@ -55,7 +66,6 @@ public class MovieFragment extends Fragment {
         return rootView;
     }
 
-    //    Hides keyboard- Code from: http://stackoverflow.com/questions/4165414/how-to-hide-soft-keyboard-on-android-after-clicking-outside-edittext
     public static void hideKeyboard(Activity activity) {
         InputMethodManager inputMethodManager = (InputMethodManager) activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
         inputMethodManager.hideSoftInputFromWindow(activity.getCurrentFocus().getWindowToken(), 0);
