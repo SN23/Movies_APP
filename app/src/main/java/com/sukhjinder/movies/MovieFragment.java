@@ -1,6 +1,7 @@
 package com.sukhjinder.movies;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -43,6 +44,9 @@ public class MovieFragment extends Fragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Movie movie = (Movie) gridView.getItemAtPosition(position);
                 Toast.makeText(getContext(), movie.getTitle(), Toast.LENGTH_SHORT).show();
+                Intent i = new Intent(getContext(),MovieInfo.class);
+                i.putExtra("movieInfo", movie);
+                startActivity(i);
             }
         });
 

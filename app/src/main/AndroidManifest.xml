@@ -18,6 +18,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name="MovieInfo"
+            android:label="@string/movieInfo">
+            <intent-filter>
+                <action android:name="movieInfo" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

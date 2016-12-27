@@ -101,6 +101,7 @@ public class FetchMovieTask extends AsyncTask<String, Void, ArrayList<Movie>> {
         final String TITLE = "original_title";
         final String OVERVIEW = "overview";
         final String POSTER_PATH = "poster_path";
+        final String BACKDROP_PATH = "backdrop_path";
 
         JSONObject movieJson = new JSONObject(newsJsonStr);
         JSONArray resultsArray = movieJson.getJSONArray(RESULTS);
@@ -109,14 +110,16 @@ public class FetchMovieTask extends AsyncTask<String, Void, ArrayList<Movie>> {
             String title;
             String overview;
             String poster;
+            String backdrop;
             // Get the JSON object representing the news story
             JSONObject MovieInfo = resultsArray.getJSONObject(i);
 
             title = MovieInfo.getString(TITLE);
             overview = MovieInfo.getString(OVERVIEW);
             poster = MovieInfo.getString(POSTER_PATH);
+            backdrop = MovieInfo.getString(BACKDROP_PATH);
 
-            movies.add(new Movie(title, overview, poster));
+            movies.add(new Movie(title, overview, poster, backdrop));
         }
         return movies;
     }
