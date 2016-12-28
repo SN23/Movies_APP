@@ -12,7 +12,6 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -43,8 +42,7 @@ public class MovieFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Movie movie = (Movie) gridView.getItemAtPosition(position);
-                Toast.makeText(getContext(), movie.getTitle(), Toast.LENGTH_SHORT).show();
-                Intent i = new Intent(getContext(),MovieInfo.class);
+                Intent i = new Intent(getContext(), MovieInfo.class);
                 i.putExtra("movieInfo", movie);
                 startActivity(i);
             }

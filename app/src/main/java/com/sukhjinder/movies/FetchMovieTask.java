@@ -28,6 +28,9 @@ public class FetchMovieTask extends AsyncTask<String, Void, ArrayList<Movie>> {
         this.MovieAdapter = movieAdapter;
     }
 
+    int pageNum = 2;
+    int totalPageNum=0;
+
 
     @Override
     protected ArrayList<Movie> doInBackground(String... params) {
@@ -37,10 +40,12 @@ public class FetchMovieTask extends AsyncTask<String, Void, ArrayList<Movie>> {
         String movieJsonStr = null;
 
         try {
-            final String NEWS_BASE_URL = "http://api.themoviedb.org/3/movie/popular?";
+            final String NEWS_BASE_URL = "http://api.themoviedb.org/3/movie/now_playing?";
+            final String PAGENUM = "&page=";
             final String API_PARAM = "api_key";
 
             Uri builtUri = Uri.parse(NEWS_BASE_URL).buildUpon()
+                    .appendQueryParameter(PAGENUM,Integer.toString(pageNum))
                     .appendQueryParameter(API_PARAM, BuildConfig.TMDB_API_KEY)
                     .build();
 
@@ -111,7 +116,7 @@ public class FetchMovieTask extends AsyncTask<String, Void, ArrayList<Movie>> {
             String overview;
             String poster;
             String backdrop;
-            // Get the JSON object representing the news story
+            // Get the JSON object representing the movie
             JSONObject MovieInfo = resultsArray.getJSONObject(i);
 
             title = MovieInfo.getString(TITLE);
