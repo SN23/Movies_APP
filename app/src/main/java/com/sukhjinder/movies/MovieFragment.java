@@ -52,7 +52,7 @@ public class MovieFragment extends Fragment {
 
             @Override
             public void onClick(View v) {
-//                mMovieAdapter.clear();
+                mMovieAdapter.clear();
                 new FetchMovieTask(mMovieAdapter).execute();
 
                 result = true;

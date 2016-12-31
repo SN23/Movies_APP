@@ -29,7 +29,7 @@ public class FetchMovieTask extends AsyncTask<String, Void, ArrayList<Movie>> {
     }
 
     int pageNum = 1;
-    int totalPageNum = 0;
+    int totalPageNum = 33;
 
 
     @Override
@@ -41,10 +41,12 @@ public class FetchMovieTask extends AsyncTask<String, Void, ArrayList<Movie>> {
 
         try {
             final String BASE_URL = "http://api.themoviedb.org/3/movie/now_playing?";
+            final String LANGUAGE = "language";
             final String PAGENUM = "page";
             final String API_PARAM = "api_key";
 
             Uri builtUri = Uri.parse(BASE_URL).buildUpon()
+                    .appendQueryParameter(LANGUAGE, "en-US")
                     .appendQueryParameter(PAGENUM, Integer.toString(pageNum))
                     .appendQueryParameter(API_PARAM, BuildConfig.TMDB_API_KEY)
                     .build();

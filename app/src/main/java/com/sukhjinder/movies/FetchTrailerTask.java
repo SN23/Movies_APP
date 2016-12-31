@@ -36,11 +36,14 @@ public class FetchTrailerTask extends AsyncTask<String, Void, String> {
         try {
             final String BASE_URL = "http://api.themoviedb.org/3/movie/";
             final String API_PARAM = "api_key";
+            final String LANGUAGE = "language";
+
 
             Uri builtUri = Uri.parse(BASE_URL).buildUpon()
                     .appendPath(params[0])
                     .appendPath("videos")
                     .appendQueryParameter(API_PARAM, BuildConfig.TMDB_API_KEY)
+                    .appendQueryParameter(LANGUAGE, "en-US")
                     .build();
 
             URL url = new URL(builtUri.toString());

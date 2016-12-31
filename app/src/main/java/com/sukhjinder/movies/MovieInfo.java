@@ -1,6 +1,5 @@
 package com.sukhjinder.movies;
 
-
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -9,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
@@ -42,7 +42,11 @@ public class MovieInfo extends AppCompatActivity {
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/watch?v=" + movie.getTrailer())));
+                if (movie.getTrailer().equals("")) {
+                    Toast.makeText(getApplicationContext(), "Trailer not availble", Toast.LENGTH_SHORT).show();
+                } else {
+                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/watch?v=" + movie.getTrailer())));
+                }
             }
         });
 
