@@ -31,18 +31,21 @@ public class MovieInfo extends AppCompatActivity {
         movieTitle = (TextView) findViewById(R.id.movieTitle);
         movieOverview = (TextView) findViewById(R.id.movieOverview);
         movieBackdrop = (ImageView) findViewById(R.id.movieBackdrop);
-        floatingActionButton = (FloatingActionButton) findViewById(R.id.floatingActionButton);
-        floatingActionButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/watch?v=frdj1zb9sMY")));
-            }
-        });
 
-        Movie movie = (Movie) getIntent().getSerializableExtra("movieInfo");
+        final Movie movie = (Movie) getIntent().getSerializableExtra("movieInfo");
         movieTitle.setText(movie.getTitle());
         movieOverview.setText(movie.getOverview());
         movieBackdrop.setAdjustViewBounds(true);
         Picasso.with(getApplicationContext()).load("https://image.tmdb.org/t/p/w1280/" + movie.getBackdrop()).into(movieBackdrop);
+
+        floatingActionButton = (FloatingActionButton) findViewById(R.id.floatingActionButton);
+        floatingActionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/watch?v=" + movie.getTrailer())));
+            }
+        });
+
+
     }
 }

@@ -18,24 +18,12 @@ public class Movie implements Serializable {
         return trailer;
     }
 
-    public void setTrailer(String trailer) {
-        this.trailer = trailer;
-    }
-
     public String getId() {
         return id;
     }
 
-    public void setId(String id) {
-        this.id = id;
-    }
-
     public String getBackdrop() {
         return backdrop;
-    }
-
-    public void setBackdrop(String backdrop) {
-        this.backdrop = backdrop;
     }
 
     public String getPoster() {
@@ -51,10 +39,12 @@ public class Movie implements Serializable {
     }
 
 
-    public Movie(String title, String overview, String poster, String backdrop, String id) {
+    public Movie(String title, String overview, String poster, String backdrop, String id, String trailer) {
         this.overview = overview;
         this.title = title;
         this.poster = poster;
         this.backdrop = backdrop;
+        this.trailer = trailer;
+        this.id = id;
     }
 }

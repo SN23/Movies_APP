@@ -14,43 +14,36 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.ArrayList;
 
 /**
  * Created by Sukhjinder on 7/9/16.
  */
-public class FetchMovieTask extends AsyncTask<String, Void, ArrayList<Movie>> {
+public class FetchTrailerTask extends AsyncTask<String, Void, String> {
 
     private final String LOG_TAG = FetchMovieTask.class.getSimpleName();
-    private MovieAdapter MovieAdapter;
 
-    public FetchMovieTask(MovieAdapter movieAdapter) {
-        this.MovieAdapter = movieAdapter;
+    public FetchTrailerTask() {
+
     }
 
-    int pageNum = 1;
-    int totalPageNum = 0;
-
-
     @Override
-    protected ArrayList<Movie> doInBackground(String... params) {
+    protected String doInBackground(String... params) {
 
         HttpURLConnection urlConnection = null;
         BufferedReader reader = null;
         String movieJsonStr = null;
 
         try {
-            final String BASE_URL = "http://api.themoviedb.org/3/movie/now_playing?";
-            final String PAGENUM = "page";
+            final String BASE_URL = "http://api.themoviedb.org/3/movie/";
             final String API_PARAM = "api_key";
 
             Uri builtUri = Uri.parse(BASE_URL).buildUpon()
-                    .appendQueryParameter(PAGENUM, Integer.toString(pageNum))
+                    .appendPath(params[0])
+                    .appendPath("videos")
                     .appendQueryParameter(API_PARAM, BuildConfig.TMDB_API_KEY)
                     .build();
 
             URL url = new URL(builtUri.toString());
-            Log.d("URL", url.toString());
 
             urlConnection = (HttpURLConnection) url.openConnection();
             urlConnection.setRequestMethod("GET");
@@ -97,52 +90,24 @@ public class FetchMovieTask extends AsyncTask<String, Void, ArrayList<Movie>> {
     }
 
 
-    //      JSON parser
-    private ArrayList<Movie> getMovieDataFromJson(String movieJsonStr)
+    //JSON parser
+    private String getMovieDataFromJson(String movieJsonStr)
             throws JSONException {
 
-        final ArrayList<Movie> movies = new ArrayList<>();
-
         final String RESULTS = "results";
-        final String TITLE = "original_title";
-        final String OVERVIEW = "overview";
-        final String POSTER_PATH = "poster_path";
-        final String BACKDROP_PATH = "backdrop_path";
-        final String ID = "id";
+        final String KEY = "key";
 
         JSONObject movieJson = new JSONObject(movieJsonStr);
         JSONArray resultsArray = movieJson.getJSONArray(RESULTS);
 
-        for (int i = 0; i < resultsArray.length(); i++) {
-            String title;
-            String overview;
-            String poster;
-            String backdrop;
-            String id;
-            String trailer;
+        String trailer = "";
 
-            // Get the JSON object representing the movie
-            JSONObject MovieInfo = resultsArray.getJSONObject(i);
-
-            id = MovieInfo.getString(ID);
-            title = MovieInfo.getString(TITLE);
-            overview = MovieInfo.getString(OVERVIEW);
-            poster = MovieInfo.getString(POSTER_PATH);
-            backdrop = MovieInfo.getString(BACKDROP_PATH);
-            trailer = new FetchTrailerTask().doInBackground(id);
-
-            movies.add(new Movie(title, overview, poster, backdrop, id, trailer));
+        // Get the JSON object representing the movie
+        if (resultsArray.length() > 0) {
+            JSONObject MovieInfo = resultsArray.getJSONObject(0);
+            trailer = MovieInfo.getString(KEY);
         }
-        return movies;
-    }
 
-    @Override
-    protected void onPostExecute(ArrayList<Movie> movie) {
-        if (movie != null) {
-            MovieAdapter.clear();
-            for (Movie movieInfo : movie) {
-                MovieAdapter.add(movieInfo);
-            }
-        }
+        return trailer;
     }
 }
