@@ -12,23 +12,8 @@ public class Movie implements Serializable {
     private String backdrop;
     private String id;
     private String trailer;
+    private String releaseDate;
 
-
-    public String getTrailer() {
-        return trailer;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public String getBackdrop() {
-        return backdrop;
-    }
-
-    public String getPoster() {
-        return poster;
-    }
 
     public String getOverview() {
         return overview;
@@ -38,13 +23,35 @@ public class Movie implements Serializable {
         return title;
     }
 
+    public String getPoster() {
+        return poster;
+    }
 
-    public Movie(String title, String overview, String poster, String backdrop, String id, String trailer) {
+    public String getBackdrop() {
+        return backdrop;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public String getTrailer() {
+        return trailer;
+    }
+
+    public String getReleaseDate() {
+        return releaseDate;
+    }
+
+
+    public Movie(String title, String overview, String poster, String backdrop, String id, String trailer, String releaseDate) {
         this.overview = overview;
         this.title = title;
         this.poster = poster;
         this.backdrop = backdrop;
         this.trailer = trailer;
         this.id = id;
+        this.releaseDate = releaseDate;
+
     }
 }

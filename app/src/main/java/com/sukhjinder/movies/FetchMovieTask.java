@@ -14,7 +14,11 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * Created by Sukhjinder on 7/9/16.
@@ -111,6 +115,7 @@ public class FetchMovieTask extends AsyncTask<String, Void, ArrayList<Movie>> {
         final String POSTER_PATH = "poster_path";
         final String BACKDROP_PATH = "backdrop_path";
         final String ID = "id";
+        final String RELEASEDATE = "release_date";
 
         JSONObject movieJson = new JSONObject(movieJsonStr);
         JSONArray resultsArray = movieJson.getJSONArray(RESULTS);
@@ -122,18 +127,31 @@ public class FetchMovieTask extends AsyncTask<String, Void, ArrayList<Movie>> {
             String backdrop;
             String id;
             String trailer;
+            String releaseDate;
 
             // Get the JSON object representing the movie
             JSONObject MovieInfo = resultsArray.getJSONObject(i);
 
             id = MovieInfo.getString(ID);
+            backdrop = MovieInfo.getString(BACKDROP_PATH);
             title = MovieInfo.getString(TITLE);
             overview = MovieInfo.getString(OVERVIEW);
             poster = MovieInfo.getString(POSTER_PATH);
-            backdrop = MovieInfo.getString(BACKDROP_PATH);
+
+            releaseDate = MovieInfo.getString(RELEASEDATE);
+            DateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd");
+            DateFormat outputFormat = new SimpleDateFormat("MMM dd, yyyy");
+            Date date = null;
+            try {
+                date = inputFormat.parse(releaseDate);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+            releaseDate = outputFormat.format(date);
             trailer = new FetchTrailerTask().doInBackground(id);
 
-            movies.add(new Movie(title, overview, poster, backdrop, id, trailer));
+
+            movies.add(new Movie(title, overview, poster, backdrop, id, trailer, releaseDate));
         }
         return movies;
     }

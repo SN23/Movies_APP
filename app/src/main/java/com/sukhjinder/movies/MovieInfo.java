@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.Window;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -20,23 +21,33 @@ public class MovieInfo extends AppCompatActivity {
 
     TextView movieTitle;
     TextView movieOverview;
+    TextView movieReleaseDate;
     ImageView movieBackdrop;
     FloatingActionButton floatingActionButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.movie_info);
 
+        movieBackdrop = (ImageView) findViewById(R.id.movieBackdrop);
         movieTitle = (TextView) findViewById(R.id.movieTitle);
         movieOverview = (TextView) findViewById(R.id.movieOverview);
-        movieBackdrop = (ImageView) findViewById(R.id.movieBackdrop);
+        movieReleaseDate = (TextView) findViewById(R.id.movieReleaseDate);
+
 
         final Movie movie = (Movie) getIntent().getSerializableExtra("movieInfo");
+        Picasso.with(getApplicationContext())
+                .load("https://image.tmdb.org/t/p/w1280/" + movie.getBackdrop())
+                .fit()
+                .centerCrop()
+                .into(movieBackdrop);
+
         movieTitle.setText(movie.getTitle());
         movieOverview.setText(movie.getOverview());
+        movieReleaseDate.setText(movie.getReleaseDate());
         movieBackdrop.setAdjustViewBounds(true);
-        Picasso.with(getApplicationContext()).load("https://image.tmdb.org/t/p/w1280/" + movie.getBackdrop()).into(movieBackdrop);
 
         floatingActionButton = (FloatingActionButton) findViewById(R.id.floatingActionButton);
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
@@ -49,7 +60,5 @@ public class MovieInfo extends AppCompatActivity {
                 }
             }
         });
-
-
     }
 }
