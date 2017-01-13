@@ -26,9 +26,10 @@ import java.util.Date;
 public class FetchSimilarMovieTask extends AsyncTask<String, Void, ArrayList<Movie>> {
 
     private final String LOG_TAG = FetchMovieTask.class.getSimpleName();
+    private SimilarMovieAdapter SimilarMovieAdapter;
 
-    public FetchSimilarMovieTask() {
-
+    public FetchSimilarMovieTask(SimilarMovieAdapter similarMovieAdapter) {
+        this.SimilarMovieAdapter = similarMovieAdapter;
     }
 
     @Override
@@ -147,5 +148,15 @@ public class FetchSimilarMovieTask extends AsyncTask<String, Void, ArrayList<Mov
             movies.add(new Movie(title, overview, poster, backdrop, id, trailer, releaseDate));
         }
         return movies;
+    }
+
+    @Override
+    protected void onPostExecute(ArrayList<Movie> movie) {
+        if (movie != null) {
+            SimilarMovieAdapter.clear();
+            for (Movie movieInfo : movie) {
+                SimilarMovieAdapter.add(movieInfo);
+            }
+        }
     }
 }

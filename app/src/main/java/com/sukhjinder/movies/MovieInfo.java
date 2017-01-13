@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.view.Window;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -27,12 +26,10 @@ public class MovieInfo extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.movie_info);
 
         movieBackdrop = (ImageView) findViewById(R.id.movieBackdrop);
-        movieTitle = (TextView) findViewById(R.id.movieTitle);
         movieOverview = (TextView) findViewById(R.id.movieOverview);
         movieReleaseDate = (TextView) findViewById(R.id.movieReleaseDate);
 
@@ -43,8 +40,8 @@ public class MovieInfo extends AppCompatActivity {
                 .fit()
                 .centerCrop()
                 .into(movieBackdrop);
+        getSupportActionBar().setTitle(movie.getTitle());
 
-        movieTitle.setText(movie.getTitle());
         movieOverview.setText(movie.getOverview());
         movieReleaseDate.setText(movie.getReleaseDate());
         movieBackdrop.setAdjustViewBounds(true);
