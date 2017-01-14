@@ -49,6 +49,8 @@ public class MainActivity extends AppCompatActivity {
             switch (position) {
                 case 0:
                     return new MovieFragment();
+                case 1:
+                    return new MovieSearchFragment();
                 default:
                     return null;
 
@@ -57,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public int getCount() {
-            return 1;
+            return 2;
         }
 
         @Override
@@ -65,6 +67,8 @@ public class MainActivity extends AppCompatActivity {
             switch (position) {
                 case 0:
                     return "Now Playing";
+                case 1:
+                    return "Search";
             }
             return null;
         }

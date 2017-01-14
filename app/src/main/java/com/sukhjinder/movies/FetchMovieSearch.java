@@ -21,15 +21,16 @@ import java.util.ArrayList;
 import java.util.Date;
 
 /**
- * Created by Sukhjinder on 7/9/16.
+ * Created by Sukhjinder on 1/13/17.
  */
-public class FetchMovieTask extends AsyncTask<String, Void, ArrayList<Movie>> {
+
+public class FetchMovieSearch extends AsyncTask<String, Void, ArrayList<Movie>> {
 
     private final String LOG_TAG = FetchMovieTask.class.getSimpleName();
-    private MovieAdapter MovieAdapter;
+    private MovieSearchAdapter MovieSearchAdapter;
 
-    public FetchMovieTask(MovieAdapter movieAdapter) {
-        this.MovieAdapter = movieAdapter;
+    public FetchMovieSearch(MovieSearchAdapter movieSearchAdapter) {
+        this.MovieSearchAdapter = movieSearchAdapter;
     }
 
     @Override
@@ -40,15 +41,16 @@ public class FetchMovieTask extends AsyncTask<String, Void, ArrayList<Movie>> {
         String movieJsonStr = null;
 
         try {
-            final String BASE_URL = "http://api.themoviedb.org/3/movie/now_playing?";
+            final String BASE_URL = "https://api.themoviedb.org/3/search/movie?";
             final String LANGUAGE = "language";
             final String API_PARAM = "api_key";
-            final String PAGE = "page";
+            final String QUERY = "query";
+
 
             Uri builtUri = Uri.parse(BASE_URL).buildUpon()
                     .appendQueryParameter(API_PARAM, BuildConfig.TMDB_API_KEY)
                     .appendQueryParameter(LANGUAGE, "en-US")
-                    .appendQueryParameter(PAGE, params[0])
+                    .appendQueryParameter(QUERY, params[0])
                     .build();
 
             URL url = new URL(builtUri.toString());
@@ -138,12 +140,16 @@ public class FetchMovieTask extends AsyncTask<String, Void, ArrayList<Movie>> {
             DateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd");
             DateFormat outputFormat = new SimpleDateFormat("MMM dd, yyyy");
             Date date = null;
-            try {
-                date = inputFormat.parse(releaseDate);
-            } catch (ParseException e) {
-                e.printStackTrace();
+            if (!(releaseDate.equals(""))) {
+                try {
+                    date = inputFormat.parse(releaseDate);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+                releaseDate = outputFormat.format(date);
+            } else {
+                releaseDate = "";
             }
-            releaseDate = outputFormat.format(date);
             trailer = new FetchTrailerTask().doInBackground(id);
 
 
@@ -155,9 +161,9 @@ public class FetchMovieTask extends AsyncTask<String, Void, ArrayList<Movie>> {
     @Override
     protected void onPostExecute(ArrayList<Movie> movie) {
         if (movie != null) {
-            MovieAdapter.clear();
+            MovieSearchAdapter.clear();
             for (Movie movieInfo : movie) {
-                MovieAdapter.add(movieInfo);
+                MovieSearchAdapter.add(movieInfo);
             }
         }
     }
