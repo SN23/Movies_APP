@@ -18,11 +18,11 @@ import com.squareup.picasso.Picasso;
 
 public class MovieInfo extends AppCompatActivity {
 
-    TextView movieTitle;
     TextView movieOverview;
     TextView movieReleaseDate;
     ImageView movieBackdrop;
-    FloatingActionButton floatingActionButton;
+    FloatingActionButton playTrailerButton;
+    FloatingActionButton addToWatchListButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,8 +46,8 @@ public class MovieInfo extends AppCompatActivity {
         movieReleaseDate.setText(movie.getReleaseDate());
         movieBackdrop.setAdjustViewBounds(true);
 
-        floatingActionButton = (FloatingActionButton) findViewById(R.id.floatingActionButton);
-        floatingActionButton.setOnClickListener(new View.OnClickListener() {
+        playTrailerButton = (FloatingActionButton) findViewById(R.id.PlayTrailer);
+        playTrailerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (movie.getTrailer().equals("")) {
@@ -57,5 +57,18 @@ public class MovieInfo extends AppCompatActivity {
                 }
             }
         });
+
+
+        addToWatchListButton = (FloatingActionButton) findViewById(R.id.addToWatchList);
+        addToWatchListButton.setOnClickListener(new View.OnClickListener() {
+            WatchList watchList = new WatchList();
+
+            @Override
+            public void onClick(View v) {
+                watchList.addToList(movie);
+                Toast.makeText(getApplicationContext(), "Added To List", Toast.LENGTH_SHORT).show();
+            }
+        });
+
     }
 }
