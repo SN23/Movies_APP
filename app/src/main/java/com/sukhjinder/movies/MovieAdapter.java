@@ -18,9 +18,15 @@ import java.util.ArrayList;
 
 public class MovieAdapter extends ArrayAdapter<Movie> {
 
+    private Context context;
+    private int layoutResourceId;
+    private ArrayList<Movie> movies = new ArrayList<Movie>();
 
-    public MovieAdapter(Context context, ArrayList<Movie> Movies) {
-        super(context, 0, Movies);
+    public MovieAdapter(Context context, int layoutResourceId, ArrayList<Movie> movies) {
+        super(context, layoutResourceId, movies);
+        this.context = context;
+        this.layoutResourceId = layoutResourceId;
+        this.movies = movies;
     }
 
     @Override
@@ -38,7 +44,7 @@ public class MovieAdapter extends ArrayAdapter<Movie> {
         }
 
         viewHolder.moviePoster.setAdjustViewBounds(true);
-        Picasso.with(getContext()).load("http://image.tmdb.org/t/p/w500" + movie.getPoster()).into(viewHolder.moviePoster);
+        Picasso.with(context).load("http://image.tmdb.org/t/p/w500" + movie.getPoster()).into(viewHolder.moviePoster);
 
         return convertView;
     }
