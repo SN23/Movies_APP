@@ -33,5 +33,4 @@ public class WatchListFragment extends Fragment {
         });
         return rootView;
     }
-
 }

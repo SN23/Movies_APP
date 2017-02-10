@@ -17,8 +17,8 @@ import java.util.ArrayList;
  */
 public class MovieFragment extends Fragment {
 
-    private MovieAdapter mMovieAdapter;
-    private ProgressBar mProgressBar;
+    private MovieAdapter MovieAdapter;
+    private ProgressBar ProgressBar;
     private GridView GridView;
 
     ArrayList<Movie> movies;
@@ -38,14 +38,14 @@ public class MovieFragment extends Fragment {
 
         final View rootView = inflater.inflate(R.layout.movie_list, container, false);
         GridView = (GridView) rootView.findViewById(R.id.list_movies);
-        mProgressBar = (ProgressBar) rootView.findViewById(R.id.progressBar);
-        mProgressBar.setVisibility(View.VISIBLE);
+        ProgressBar = (ProgressBar) rootView.findViewById(R.id.progressBar);
+        ProgressBar.setVisibility(View.VISIBLE);
 
-        mMovieAdapter = new MovieAdapter(getActivity(), R.layout.movie_list, new ArrayList<Movie>());
-        new FetchMovieTask(mMovieAdapter, mProgressBar).execute("1");
-        new FetchMovieTask(mMovieAdapter, mProgressBar).execute("1");
+        MovieAdapter = new MovieAdapter(getActivity(), R.layout.movie_list, new ArrayList<Movie>());
+        new FetchMovieTask(MovieAdapter, ProgressBar).execute("1");
+        new FetchMovieTask(MovieAdapter, ProgressBar).execute("1");
 
-        GridView.setAdapter(mMovieAdapter);
+        GridView.setAdapter(MovieAdapter);
         GridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {

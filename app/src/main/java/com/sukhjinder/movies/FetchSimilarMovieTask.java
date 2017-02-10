@@ -28,8 +28,8 @@ public class FetchSimilarMovieTask extends AsyncTask<String, Void, ArrayList<Mov
     private final String LOG_TAG = FetchMovieTask.class.getSimpleName();
     private SimilarMovieAdapter SimilarMovieAdapter;
 
-    public FetchSimilarMovieTask(SimilarMovieAdapter similarMovieAdapter) {
-        this.SimilarMovieAdapter = similarMovieAdapter;
+    public FetchSimilarMovieTask(SimilarMovieAdapter SimilarMovieAdapter) {
+        this.SimilarMovieAdapter = SimilarMovieAdapter;
     }
 
     @Override
