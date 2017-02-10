@@ -12,6 +12,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridView;
+import android.widget.ProgressBar;
 
 import java.util.ArrayList;
 
@@ -21,7 +22,8 @@ import java.util.ArrayList;
 
 public class MovieSearchFragment extends Fragment {
 
-    private MovieSearchAdapter mMovieSearchAdapter;
+    private MovieSearchAdapter MovieSearchAdapter;
+    private ProgressBar ProgressBar;
     ArrayList<Movie> movies;
     Button searchButton;
     EditText input;
@@ -30,7 +32,6 @@ public class MovieSearchFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setRetainInstance(true);
-        mMovieSearchAdapter = new MovieSearchAdapter(getActivity(), new ArrayList<Movie>());
 
     }
 
@@ -38,26 +39,27 @@ public class MovieSearchFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
+        MovieSearchAdapter = new MovieSearchAdapter(getActivity(), new ArrayList<Movie>());
         final View rootView = inflater.inflate(R.layout.search_movie_list, container, false);
+        ProgressBar = (ProgressBar) rootView.findViewById(R.id.progressBar);
         searchButton = (Button) rootView.findViewById(R.id.searchButton);
         input = (EditText) rootView.findViewById(R.id.searchEditText);
 
         searchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                ProgressBar.setVisibility(View.VISIBLE);
                 if (!(input.getText().equals(""))) {
                     String query = input.getText().toString().trim();
-                    mMovieSearchAdapter.clear();
-                    new FetchMovieSearch(mMovieSearchAdapter).execute(query);
+                    MovieSearchAdapter.clear();
+                    new FetchMovieSearch(MovieSearchAdapter, ProgressBar).execute(query);
                     hideKeyboard(getActivity());
                 }
             }
         });
 
         final GridView gridView = (GridView) rootView.findViewById(R.id.searchList_movies);
-        gridView.setAdapter(mMovieSearchAdapter);
-        gridView.setEmptyView(rootView.findViewById(R.id.text_no_movies));
+        gridView.setAdapter(MovieSearchAdapter);
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -70,7 +72,6 @@ public class MovieSearchFragment extends Fragment {
 
         return rootView;
     }
-
 
     public static void hideKeyboard(Activity activity) {
         InputMethodManager inputMethodManager = (InputMethodManager) activity.getSystemService(Activity.INPUT_METHOD_SERVICE);

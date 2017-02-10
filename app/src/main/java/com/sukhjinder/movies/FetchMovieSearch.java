@@ -3,6 +3,8 @@ package com.sukhjinder.movies;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.util.Log;
+import android.view.View;
+import android.widget.ProgressBar;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -28,9 +30,11 @@ public class FetchMovieSearch extends AsyncTask<String, Void, ArrayList<Movie>> 
 
     private final String LOG_TAG = FetchMovieTask.class.getSimpleName();
     private MovieSearchAdapter MovieSearchAdapter;
+    private ProgressBar ProgressBar;
 
-    public FetchMovieSearch(MovieSearchAdapter movieSearchAdapter) {
+    public FetchMovieSearch(MovieSearchAdapter movieSearchAdapter, ProgressBar ProgressBar) {
         this.MovieSearchAdapter = movieSearchAdapter;
+        this.ProgressBar = ProgressBar;
     }
 
     @Override
@@ -166,5 +170,7 @@ public class FetchMovieSearch extends AsyncTask<String, Void, ArrayList<Movie>> 
                 MovieSearchAdapter.add(movieInfo);
             }
         }
+        ProgressBar.setVisibility(View.GONE);
+
     }
 }
