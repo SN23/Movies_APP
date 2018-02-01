@@ -72,7 +72,6 @@ public class NowPlayingFragment extends Fragment {
                 List<Movie> movieList = results.getResults();
                 recyclerView.setItemAnimator(new DefaultItemAnimator());
                 recyclerView.setAdapter(new NowPlayingAdapter(getContext(), movieList));
-
             }
 
             @Override

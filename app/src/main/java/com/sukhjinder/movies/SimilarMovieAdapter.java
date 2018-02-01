@@ -37,7 +37,7 @@ public class SimilarMovieAdapter extends ArrayAdapter<Movie> {
         }
 
         viewHolder.moviePoster.setAdjustViewBounds(true);
-        Picasso.with(getContext()).load("http://image.tmdb.org/t/p/w500" + movie.getPoster()).into(viewHolder.moviePoster);
+        Picasso.with(getContext()).load("http://image.tmdb.org/t/p/w500" + movie.getPoster_path()).into(viewHolder.moviePoster);
 
         return convertView;
     }
