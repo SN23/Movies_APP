@@ -18,15 +18,15 @@ android {
         }
     }
     buildTypes.each {
-        it.buildConfigField 'String', 'TMDB_API_KEY', "\""+getApiKey()+"\""
+        it.buildConfigField 'String', 'TMDB_API_KEY', "\"" + getApiKey() + "\""
     }
 }
 
-    def getApiKey(){
-        Properties props = new Properties()
-        props.load(new FileInputStream(rootProject.file('secret')))
-        return props['TMDB_API_KEY']
-    }
+def getApiKey() {
+    Properties props = new Properties()
+    props.load(new FileInputStream(rootProject.file('secret')))
+    return props['TMDB_API_KEY']
+}
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])

@@ -1,12 +1,12 @@
 <resources>
     <string name="app_name">Movies</string>
     <string name="movieInfo">Movie Info</string>
+    <string name="trailers">Trailers</string>
 
     <string name="movie_keyword">Enter a keyword</string>
     <string name="no_movies_found">No movies found</string>
     <string name="no_movie">No movie title</string>
     <string name="load">Load</string>
-
 
 
 </resources>
