@@ -5,6 +5,8 @@ package com.sukhjinder.movies;
  */
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,7 +23,8 @@ public class TrailerViewAdapter extends RecyclerView.Adapter<TrailerViewAdapter.
     private Context context;
     private ArrayList<Trailer> trailers;
     private int totalPages;
-    private static String BASE_URL = "https://img.youtube.com/vi/";
+    private static String BASE_URL_YOUTUBE_THUMBNAIL = "https://img.youtube.com/vi/";
+    private static String Base_URL_YOUTUBE = "https://www.youtube.com/watch?v=";
 
 
     public TrailerViewAdapter(Context context, ArrayList<Trailer> trailers) {
@@ -42,8 +45,15 @@ public class TrailerViewAdapter extends RecyclerView.Adapter<TrailerViewAdapter.
 
         viewHolder.trailer_thumbnail.setAdjustViewBounds(true);
         Picasso.with(context)
-                .load(BASE_URL + trailers.get(position).getKey() + "/0.jpg")
+                .load(BASE_URL_YOUTUBE_THUMBNAIL + trailers.get(position).getKey() + "/0.jpg")
                 .into(viewHolder.trailer_thumbnail);
+
+        viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                context.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(Base_URL_YOUTUBE + trailers.get(pos).getKey())));
+            }
+        });
     }
 
     @Override
