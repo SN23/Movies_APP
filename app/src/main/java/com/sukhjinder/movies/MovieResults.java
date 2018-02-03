@@ -7,7 +7,7 @@ import java.util.List;
  */
 
 public class MovieResults {
-    
+
     private int page;
     private int total_results;
     private DatesBean dates;

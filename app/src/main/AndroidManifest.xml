@@ -22,11 +22,20 @@
         </activity>
 
         <activity
-            android:name="MovieInfo"
+            android:name=".MovieInfo"
             android:label="@string/movieInfo">
             <intent-filter>
                 <action android:name="movieInfo" />
             </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".TrailerView"
+            android:label="@string/trailers">
+            <intent-filter>
+                <action android:name="trailers" />
+            </intent-filter>
+
         </activity>
     </application>
 
