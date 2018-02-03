@@ -1,5 +1,6 @@
 package com.sukhjinder.movies;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -15,12 +16,13 @@ public class TrailerView extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.trailer_view);
+        Context context = TrailerView.this;
 
         ArrayList<Trailer> trailers = getIntent().getParcelableArrayListExtra("movie_trailers");
 
         recyclerView = findViewById(R.id.trailer_view_recycler);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
-        recyclerView.setAdapter(new TrailerViewAdapter(getApplicationContext(), trailers));
+        recyclerView.setLayoutManager(new LinearLayoutManager(context));
+        recyclerView.setAdapter(new TrailerViewAdapter(context, trailers));
 
     }
 
