@@ -20,6 +20,8 @@ android {
     buildTypes.each {
         it.buildConfigField 'String', 'TMDB_API_KEY', "\"" + getApiKey() + "\""
     }
+
+    android.dataBinding.enabled = true
 }
 
 def getApiKey() {
