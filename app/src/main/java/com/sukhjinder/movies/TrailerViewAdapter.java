@@ -22,7 +22,7 @@ public class TrailerViewAdapter extends RecyclerView.Adapter<TrailerViewAdapter.
 
     private Context context;
     private ArrayList<Trailer> trailers;
-    private int totalPages;
+    //    private int totalPages;
     private static String BASE_URL_YOUTUBE_THUMBNAIL = "https://img.youtube.com/vi/";
     private static String Base_URL_YOUTUBE = "https://www.youtube.com/watch?v=";
 

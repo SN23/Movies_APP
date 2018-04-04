@@ -21,7 +21,7 @@ public class NowPlayingAdapter extends RecyclerView.Adapter<NowPlayingAdapter.Vi
 
     private Context context;
     private List<Movie> movies;
-    private int totalPages;
+    //    private int totalPages;
     private static String BASE_URL = "http://image.tmdb.org/t/p/w500";
 
 

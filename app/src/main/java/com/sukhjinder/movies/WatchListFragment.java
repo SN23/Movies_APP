@@ -15,7 +15,7 @@ import android.view.ViewGroup;
 
 public class WatchListFragment extends Fragment {
 
-    private WatchListAdapter watchListAdapter = null;
+    //    private WatchListAdapter watchListAdapter = null;
     private Movie movie;
 
 
@@ -29,12 +29,9 @@ public class WatchListFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         Bundle bundle = getArguments();
-        if (bundle != null) {
-            if (bundle.containsKey("watch_list_item")) {
-                movie = bundle.getParcelable("watch_list_item");
+        if (bundle != null && bundle.containsKey("watch_list_item")) {
+            movie = bundle.getParcelable("watch_list_item");
 //                Log.d("MOVIE", movie.getTitle());
-
-            }
         }
 
 

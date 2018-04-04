@@ -24,12 +24,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 public class NowPlayingFragment extends Fragment {
 
-    private static String BASE_URL = "https://api.themoviedb.org/3/";
     private RecyclerView recyclerView;
-    private View rootView;
-    private Retrofit retrofit;
-
-
+    
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,7 +38,7 @@ public class NowPlayingFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        rootView = inflater.inflate(R.layout.now_playing, container, false);
+        View rootView = inflater.inflate(R.layout.now_playing, container, false);
         recyclerView = rootView.findViewById(R.id.now_playing_recycler);
 
         if (getActivity().getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
@@ -55,7 +51,8 @@ public class NowPlayingFragment extends Fragment {
     }
 
     private void apiCall() {
-        retrofit = new Retrofit.Builder()
+        String BASE_URL = "https://api.themoviedb.org/3/";
+        Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();

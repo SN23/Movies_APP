@@ -9,19 +9,17 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import java.util.List;
-
 /**
  * Created by Sukhjinder on 2/1/18.
  */
 
 public class WatchListAdapter extends RecyclerView.Adapter<WatchListAdapter.ViewHolder> {
 
-    private List<Movie> movies;
+    //    private List<Movie> movies;
     private Movie movie;
     private Context context;
-    private int totalPages;
-    private static String BASE_URL = "http://image.tmdb.org/t/p/w500";
+//    private int totalPages;
+//    private static String BASE_URL = "http://image.tmdb.org/t/p/w500";
 
 
     public WatchListAdapter(Context context, Movie movie) {
@@ -39,7 +37,7 @@ public class WatchListAdapter extends RecyclerView.Adapter<WatchListAdapter.View
     @Override
     public void onBindViewHolder(WatchListAdapter.ViewHolder viewHolder, int position) {
 
-        final int pos = position;
+//        final int pos = position;
 
         viewHolder.movie_poster.setAdjustViewBounds(true);
 //        Picasso.with(context)
