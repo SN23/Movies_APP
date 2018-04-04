@@ -29,12 +29,10 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class SearchFragment extends Fragment {
 
-    private static String BASE_URL = "https://api.themoviedb.org/3/";
     private RecyclerView recyclerView;
-    private View rootView;
-    private Button searchButton;
     private EditText input;
     private Retrofit retrofit;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -46,7 +44,8 @@ public class SearchFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        rootView = inflater.inflate(R.layout.search, container, false);
+
+        View rootView = inflater.inflate(R.layout.search, container, false);
         recyclerView = rootView.findViewById(R.id.search_recycler);
 
         if (getActivity().getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
@@ -55,12 +54,13 @@ public class SearchFragment extends Fragment {
             recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 4));
         }
 
+        String BASE_URL = "https://api.themoviedb.org/3/";
         retrofit = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
-        searchButton = rootView.findViewById(R.id.searchButton);
+        Button searchButton = rootView.findViewById(R.id.searchButton);
         input = rootView.findViewById(R.id.searchEditText);
 
         searchButton.setOnClickListener(new View.OnClickListener() {
