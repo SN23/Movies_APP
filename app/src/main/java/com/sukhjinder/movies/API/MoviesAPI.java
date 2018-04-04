@@ -1,4 +1,4 @@
-package com.sukhjinder.movies;
+package com.sukhjinder.movies.API;
 
 import com.sukhjinder.movies.Model.MovieResults;
 import com.sukhjinder.movies.Model.TrailerResults;

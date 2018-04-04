@@ -15,6 +15,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.sukhjinder.movies.API.MoviesAPI;
 import com.sukhjinder.movies.Model.Movie;
 import com.sukhjinder.movies.Model.MovieResults;
 
