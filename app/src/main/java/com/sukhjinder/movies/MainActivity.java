@@ -72,6 +72,7 @@ public class MainActivity extends AppCompatActivity {
                     return "Watch List";
                 default:
                     Log.e("Error", "page title Error");
+                    break;
 
             }
             return null;
@@ -87,9 +88,9 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == R.id.credits) {
-
-        }
+//        if (item.getItemId() == R.id.credits) {
+//
+//        }
         return super.onOptionsItemSelected(item);
     }
 
