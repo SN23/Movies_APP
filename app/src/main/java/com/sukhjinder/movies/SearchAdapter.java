@@ -39,7 +39,7 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.ViewHolder
         final int pos = position;
 
         Picasso.with(context)
-                .load(BASE_URL + movies.get(position).getPoster_path())
+                .load(BASE_URL + movies.get(position).getPosterPath())
                 .into(viewHolder.movie_poster);
 
 

@@ -9,8 +9,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.squareup.picasso.Picasso;
-
 import java.util.List;
 
 /**
@@ -44,16 +42,15 @@ public class WatchListAdapter extends RecyclerView.Adapter<WatchListAdapter.View
         final int pos = position;
 
         viewHolder.movie_poster.setAdjustViewBounds(true);
-        Picasso.with(context)
-                .load(BASE_URL + movie.getPoster_path())
-                .into(viewHolder.movie_poster);
+//        Picasso.with(context)
+//                .load(BASE_URL + movie.getPosterPath())
+//                .into(viewHolder.movie_poster);
 
 
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(context, movies.get(pos).getTitle(), Toast.LENGTH_LONG).show();
-                Movie movie = movies.get(pos);
+                Toast.makeText(context, movie.getTitle(), Toast.LENGTH_LONG).show();
 
                 Intent i = new Intent(context, MovieInfo.class);
                 i.putExtra("movieInfo", movie);
@@ -65,7 +62,7 @@ public class WatchListAdapter extends RecyclerView.Adapter<WatchListAdapter.View
 
     @Override
     public int getItemCount() {
-        return movies.size();
+        return 1;
     }
 
 

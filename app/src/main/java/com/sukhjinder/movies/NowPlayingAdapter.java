@@ -43,7 +43,7 @@ public class NowPlayingAdapter extends RecyclerView.Adapter<NowPlayingAdapter.Vi
 
         viewHolder.movie_poster.setAdjustViewBounds(true);
         Picasso.with(context)
-                .load(BASE_URL + movies.get(position).getPoster_path())
+                .load(BASE_URL + movies.get(position).getPosterPath())
                 .into(viewHolder.movie_poster);
 
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {

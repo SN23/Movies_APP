@@ -22,11 +22,11 @@ public class MovieResults {
         this.page = page;
     }
 
-    public int getTotal_results() {
+    public int getTotalResults() {
         return total_results;
     }
 
-    public void setTotal_results(int total_results) {
+    public void setTotalResults(int total_results) {
         this.total_results = total_results;
     }
 
@@ -38,11 +38,11 @@ public class MovieResults {
         this.dates = dates;
     }
 
-    public int getTotal_pages() {
+    public int getTotalPages() {
         return total_pages;
     }
 
-    public void setTotal_pages(int total_pages) {
+    public void setTotalPages(int total_pages) {
         this.total_pages = total_pages;
     }
 

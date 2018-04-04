@@ -26,18 +26,19 @@ public class SimilarMovieAdapter extends ArrayAdapter<Movie> {
     public View getView(int position, View convertView, ViewGroup parent) {
         final SimilarMovieAdapter.ViewHolder viewHolder;
         final Movie movie = getItem(position);
+        View view = convertView;
 
 
-        if (convertView == null) {
-            convertView = LayoutInflater.from(getContext()).inflate(R.layout.similar_movie_item, parent, false);
-            viewHolder = new SimilarMovieAdapter.ViewHolder(convertView);
-            convertView.setTag(viewHolder);
+        if (view == null) {
+            view = LayoutInflater.from(getContext()).inflate(R.layout.similar_movie_item, parent, false);
+            viewHolder = new SimilarMovieAdapter.ViewHolder(view);
+            view.setTag(viewHolder);
         } else {
-            viewHolder = (SimilarMovieAdapter.ViewHolder) convertView.getTag();
+            viewHolder = (SimilarMovieAdapter.ViewHolder) view.getTag();
         }
 
         viewHolder.moviePoster.setAdjustViewBounds(true);
-        Picasso.with(getContext()).load("http://image.tmdb.org/t/p/w500" + movie.getPoster_path()).into(viewHolder.moviePoster);
+        Picasso.with(getContext()).load("http://image.tmdb.org/t/p/w500" + movie.getPosterPath()).into(viewHolder.moviePoster);
 
         return convertView;
     }

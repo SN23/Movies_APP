@@ -68,7 +68,7 @@ public class NowPlayingFragment extends Fragment {
             @Override
             public void onResponse(Call<MovieResults> call, Response<MovieResults> response) {
                 MovieResults results = response.body();
-//                int totalPages = results.getTotal_pages();
+//                int totalPages = results.getTotalPages();
                 List<Movie> movieList = results.getResults();
                 recyclerView.setItemAnimator(new DefaultItemAnimator());
                 recyclerView.setAdapter(new NowPlayingAdapter(getContext(), movieList));

@@ -27,19 +27,19 @@ public class Trailer implements Parcelable {
         this.id = id;
     }
 
-    public String getIso_639_1() {
+    public String getIso6391() {
         return iso_639_1;
     }
 
-    public void setIso_639_1(String iso_639_1) {
+    public void setIso6391(String iso_639_1) {
         this.iso_639_1 = iso_639_1;
     }
 
-    public String getIso_3166_1() {
+    public String getIso31661() {
         return iso_3166_1;
     }
 
-    public void setIso_3166_1(String iso_3166_1) {
+    public void setIso31661(String iso_3166_1) {
         this.iso_3166_1 = iso_3166_1;
     }
 
