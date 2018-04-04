@@ -1,4 +1,4 @@
-package com.sukhjinder.movies.Model;
+package com.sukhjinder.movies.model;
 
 import java.util.List;
 

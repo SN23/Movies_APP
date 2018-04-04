@@ -11,10 +11,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
-import com.sukhjinder.movies.API.MoviesAPI;
-import com.sukhjinder.movies.Model.Movie;
-import com.sukhjinder.movies.Model.Trailer;
-import com.sukhjinder.movies.Model.TrailerResults;
+import com.sukhjinder.movies.api.MoviesAPI;
+import com.sukhjinder.movies.model.Movie;
+import com.sukhjinder.movies.model.Trailer;
+import com.sukhjinder.movies.model.TrailerResults;
 
 import java.util.ArrayList;
 import java.util.List;

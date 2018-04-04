@@ -1,7 +1,7 @@
-package com.sukhjinder.movies.API;
+package com.sukhjinder.movies.api;
 
-import com.sukhjinder.movies.Model.MovieResults;
-import com.sukhjinder.movies.Model.TrailerResults;
+import com.sukhjinder.movies.model.MovieResults;
+import com.sukhjinder.movies.model.TrailerResults;
 
 import retrofit2.Call;
 import retrofit2.http.GET;

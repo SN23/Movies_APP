@@ -6,7 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
-import com.sukhjinder.movies.Model.Trailer;
+import com.sukhjinder.movies.model.Trailer;
 
 import java.util.ArrayList;
 
