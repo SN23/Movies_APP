@@ -1,5 +1,8 @@
 package com.sukhjinder.movies;
 
+import com.sukhjinder.movies.Model.MovieResults;
+import com.sukhjinder.movies.Model.TrailerResults;
+
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Path;

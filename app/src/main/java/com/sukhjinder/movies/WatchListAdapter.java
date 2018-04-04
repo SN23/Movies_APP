@@ -9,6 +9,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.sukhjinder.movies.Model.Movie;
+
 /**
  * Created by Sukhjinder on 2/1/18.
  */

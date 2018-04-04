@@ -11,6 +11,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.sukhjinder.movies.Model.Movie;
+import com.sukhjinder.movies.Model.MovieResults;
+
 import java.util.List;
 
 import retrofit2.Call;
@@ -25,7 +28,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class NowPlayingFragment extends Fragment {
 
     private RecyclerView recyclerView;
-    
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

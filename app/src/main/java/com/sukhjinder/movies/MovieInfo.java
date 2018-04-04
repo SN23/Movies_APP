@@ -11,6 +11,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
+import com.sukhjinder.movies.Model.Movie;
+import com.sukhjinder.movies.Model.Trailer;
+import com.sukhjinder.movies.Model.TrailerResults;
 
 import java.util.ArrayList;
 import java.util.List;

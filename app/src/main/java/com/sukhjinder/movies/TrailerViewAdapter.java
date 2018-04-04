@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.squareup.picasso.Picasso;
+import com.sukhjinder.movies.Model.Trailer;
 
 import java.util.ArrayList;
 
