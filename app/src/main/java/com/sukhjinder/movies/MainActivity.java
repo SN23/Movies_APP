@@ -7,6 +7,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -69,6 +70,9 @@ public class MainActivity extends AppCompatActivity {
                     return "Search";
                 case 2:
                     return "Watch List";
+                default:
+                    Log.e("Error", "page title Error");
+
             }
             return null;
         }
