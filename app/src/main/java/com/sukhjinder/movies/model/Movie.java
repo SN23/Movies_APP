@@ -1,4 +1,4 @@
-package com.sukhjinder.movies;
+package com.sukhjinder.movies.model;
 
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -26,11 +26,11 @@ public class Movie implements Parcelable {
     private String release_date;
     private List<Integer> genre_ids;
 
-    public int getVote_count() {
+    public int getVoteCount() {
         return vote_count;
     }
 
-    public void setVote_count(int vote_count) {
+    public void setVoteCount(int vote_count) {
         this.vote_count = vote_count;
     }
 
@@ -50,11 +50,11 @@ public class Movie implements Parcelable {
         this.video = video;
     }
 
-    public double getVote_average() {
+    public double getVoteAverage() {
         return vote_average;
     }
 
-    public void setVote_average(double vote_average) {
+    public void setVoteAverage(double vote_average) {
         this.vote_average = vote_average;
     }
 
@@ -74,35 +74,35 @@ public class Movie implements Parcelable {
         this.popularity = popularity;
     }
 
-    public String getPoster_path() {
+    public String getPosterPath() {
         return poster_path;
     }
 
-    public void setPoster_path(String poster_path) {
+    public void setPosterPath(String poster_path) {
         this.poster_path = poster_path;
     }
 
-    public String getOriginal_language() {
+    public String getOriginalLanguage() {
         return original_language;
     }
 
-    public void setOriginal_language(String original_language) {
+    public void setOriginalLanguage(String original_language) {
         this.original_language = original_language;
     }
 
-    public String getOriginal_title() {
+    public String getOriginalTitle() {
         return original_title;
     }
 
-    public void setOriginal_title(String original_title) {
+    public void setOriginalTitle(String original_title) {
         this.original_title = original_title;
     }
 
-    public String getBackdrop_path() {
+    public String getBackdropPath() {
         return backdrop_path;
     }
 
-    public void setBackdrop_path(String backdrop_path) {
+    public void setBackdropPath(String backdrop_path) {
         this.backdrop_path = backdrop_path;
     }
 
@@ -122,19 +122,19 @@ public class Movie implements Parcelable {
         this.overview = overview;
     }
 
-    public String getRelease_date() {
+    public String getReleaseDate() {
         return release_date;
     }
 
-    public void setRelease_date(String release_date) {
+    public void setReleaseDate(String release_date) {
         this.release_date = release_date;
     }
 
-    public List<Integer> getGenre_ids() {
+    public List<Integer> getGenreIds() {
         return genre_ids;
     }
 
-    public void setGenre_ids(List<Integer> genre_ids) {
+    public void setGenreIds(List<Integer> genre_ids) {
         this.genre_ids = genre_ids;
     }
 
@@ -153,7 +153,7 @@ public class Movie implements Parcelable {
         overview = in.readString();
         release_date = in.readString();
         if (in.readByte() == 0x01) {
-            genre_ids = new ArrayList<Integer>();
+            genre_ids = new ArrayList<>();
             in.readList(genre_ids, Integer.class.getClassLoader());
         } else {
             genre_ids = null;
@@ -188,7 +188,6 @@ public class Movie implements Parcelable {
         }
     }
 
-    @SuppressWarnings("unused")
     public static final Parcelable.Creator<Movie> CREATOR = new Parcelable.Creator<Movie>() {
         @Override
         public Movie createFromParcel(Parcel in) {

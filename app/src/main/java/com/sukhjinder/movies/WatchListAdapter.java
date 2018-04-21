@@ -9,9 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.squareup.picasso.Picasso;
-
-import java.util.List;
+import com.sukhjinder.movies.model.Movie;
 
 /**
  * Created by Sukhjinder on 2/1/18.
@@ -19,11 +17,11 @@ import java.util.List;
 
 public class WatchListAdapter extends RecyclerView.Adapter<WatchListAdapter.ViewHolder> {
 
-    private List<Movie> movies;
+    //    private List<Movie> movies;
     private Movie movie;
     private Context context;
-    private int totalPages;
-    private static String BASE_URL = "http://image.tmdb.org/t/p/w500";
+//    private int totalPages;
+//    private static String BASE_URL = "http://image.tmdb.org/t/p/w500";
 
 
     public WatchListAdapter(Context context, Movie movie) {
@@ -41,19 +39,18 @@ public class WatchListAdapter extends RecyclerView.Adapter<WatchListAdapter.View
     @Override
     public void onBindViewHolder(WatchListAdapter.ViewHolder viewHolder, int position) {
 
-        final int pos = position;
+//        final int pos = position;
 
         viewHolder.movie_poster.setAdjustViewBounds(true);
-        Picasso.with(context)
-                .load(BASE_URL + movie.getPoster_path())
-                .into(viewHolder.movie_poster);
+//        Picasso.with(context)
+//                .load(BASE_URL + movie.getPosterPath())
+//                .into(viewHolder.movie_poster);
 
 
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(context, movies.get(pos).getTitle(), Toast.LENGTH_LONG).show();
-                Movie movie = movies.get(pos);
+                Toast.makeText(context, movie.getTitle(), Toast.LENGTH_LONG).show();
 
                 Intent i = new Intent(context, MovieInfo.class);
                 i.putExtra("movieInfo", movie);
@@ -65,7 +62,7 @@ public class WatchListAdapter extends RecyclerView.Adapter<WatchListAdapter.View
 
     @Override
     public int getItemCount() {
-        return movies.size();
+        return 1;
     }
 
 

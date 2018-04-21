@@ -6,11 +6,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
+import com.sukhjinder.movies.model.Trailer;
+
 import java.util.ArrayList;
 
 public class TrailerView extends AppCompatActivity {
-
-    private RecyclerView recyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,7 +20,7 @@ public class TrailerView extends AppCompatActivity {
 
         ArrayList<Trailer> trailers = getIntent().getParcelableArrayListExtra("movie_trailers");
 
-        recyclerView = findViewById(R.id.trailer_view_recycler);
+        RecyclerView recyclerView = findViewById(R.id.trailer_view_recycler);
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
         recyclerView.setAdapter(new TrailerViewAdapter(context, trailers));
 

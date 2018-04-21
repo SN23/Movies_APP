@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.squareup.picasso.Picasso;
+import com.sukhjinder.movies.model.Movie;
 
 import java.util.List;
 
@@ -39,7 +40,7 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.ViewHolder
         final int pos = position;
 
         Picasso.with(context)
-                .load(BASE_URL + movies.get(position).getPoster_path())
+                .load(BASE_URL + movies.get(position).getPosterPath())
                 .into(viewHolder.movie_poster);
 
 

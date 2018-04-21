@@ -11,6 +11,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.sukhjinder.movies.api.MoviesAPI;
+import com.sukhjinder.movies.model.Movie;
+import com.sukhjinder.movies.model.MovieResults;
+
 import java.util.List;
 
 import retrofit2.Call;
@@ -24,11 +28,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 public class NowPlayingFragment extends Fragment {
 
-    private static String BASE_URL = "https://api.themoviedb.org/3/";
     private RecyclerView recyclerView;
-    private View rootView;
-    private Retrofit retrofit;
-
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -42,7 +42,7 @@ public class NowPlayingFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        rootView = inflater.inflate(R.layout.now_playing, container, false);
+        View rootView = inflater.inflate(R.layout.now_playing, container, false);
         recyclerView = rootView.findViewById(R.id.now_playing_recycler);
 
         if (getActivity().getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
@@ -55,7 +55,8 @@ public class NowPlayingFragment extends Fragment {
     }
 
     private void apiCall() {
-        retrofit = new Retrofit.Builder()
+        String BASE_URL = "https://api.themoviedb.org/3/";
+        Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
@@ -68,7 +69,7 @@ public class NowPlayingFragment extends Fragment {
             @Override
             public void onResponse(Call<MovieResults> call, Response<MovieResults> response) {
                 MovieResults results = response.body();
-//                int totalPages = results.getTotal_pages();
+//                int totalPages = results.getTotalPages();
                 List<Movie> movieList = results.getResults();
                 recyclerView.setItemAnimator(new DefaultItemAnimator());
                 recyclerView.setAdapter(new NowPlayingAdapter(getContext(), movieList));

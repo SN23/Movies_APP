@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.squareup.picasso.Picasso;
+import com.sukhjinder.movies.model.Movie;
 
 import java.util.List;
 
@@ -21,7 +22,7 @@ public class NowPlayingAdapter extends RecyclerView.Adapter<NowPlayingAdapter.Vi
 
     private Context context;
     private List<Movie> movies;
-    private int totalPages;
+    //    private int totalPages;
     private static String BASE_URL = "http://image.tmdb.org/t/p/w500";
 
 
@@ -43,7 +44,7 @@ public class NowPlayingAdapter extends RecyclerView.Adapter<NowPlayingAdapter.Vi
 
         viewHolder.movie_poster.setAdjustViewBounds(true);
         Picasso.with(context)
-                .load(BASE_URL + movies.get(position).getPoster_path())
+                .load(BASE_URL + movies.get(position).getPosterPath())
                 .into(viewHolder.movie_poster);
 
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
